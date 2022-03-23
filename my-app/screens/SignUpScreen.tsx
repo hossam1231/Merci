@@ -87,6 +87,10 @@ const SignUpScreen = () => {
         </Heading>
         <VStack space={3} mt="5">
           <FormControl>
+            <FormControl.Label>Username</FormControl.Label>
+            <Input onChangeText={handleChangeUsername} />
+          </FormControl>
+          <FormControl>
             <FormControl.Label>Email</FormControl.Label>
             <Input onChangeText={handleChangeEmail} />
           </FormControl>
@@ -96,7 +100,11 @@ const SignUpScreen = () => {
           </FormControl>
           <FormControl>
             <FormControl.Label>Confirm Password</FormControl.Label>
-            <Input type="password" />
+            <Input onChangeText={handleChangeConfirmPassword} type="password" />
+          </FormControl>
+          <FormControl>
+            <FormControl.Label>Phone number</FormControl.Label>
+            <Input onChangeText={handleChangePhone_number} />
           </FormControl>
           <Button mt="2" colorScheme="indigo">
             Sign up

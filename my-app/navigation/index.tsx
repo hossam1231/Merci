@@ -32,11 +32,14 @@ import SignUpScreen from "../screens/SignUpScreen";
 import SignInScreen from "../screens/SignInScreen";
 import Authentication from "./Authentication";
 
+import { useSelector } from "react-redux";
+
 export default function Navigation({
   colorScheme,
 }: {
   colorScheme: ColorSchemeName;
 }) {
+  const user = useSelector((state) => state.user);
   return (
     <NavigationContainer
       linking={LinkingConfiguration}
@@ -61,7 +64,7 @@ function RootNavigator() {
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
         <Stack.Screen name="Modal" component={ModalScreen} />
       </Stack.Group> */}
-      {isSignedIn ? (
+      {user ? (
         <>
           <Stack.Screen
             name="Root"

@@ -1,14 +1,9 @@
 import { Text, View } from "react-native";
 import React, { Component } from "react";
+import { useSelector } from "react-redux";
 
-export class Authentication extends Component {
-  render() {
-    return (
-      <View>
-        <Text>Authentication</Text>
-      </View>
-    );
-  }
-}
+const Authentication = () => {
+  return <div>Authentication</div>;
+};
 
 export default Authentication;
