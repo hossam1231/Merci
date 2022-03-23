@@ -21,11 +21,16 @@ const SignUpScreen = () => {
 
   const [username, setUsername] = useState(String);
   const [password, setPassword] = useState(String);
+  const [confirmPassword, setConfirmPassword] = useState(String);
+
   const [email, setEmail] = useState();
   const [phone_number, setPhone_number] = useState();
 
   const handleChangeUsername = (text: string) => setUsername(text);
   const handleChangePassword = (text: string) => setPassword(text);
+  const handleChangeConfirmPassword = (text: string) =>
+    setConfirmPassword(text);
+
   const handleChangeEmail = (text: any) => setEmail(text);
   const handleChangePhone_number = (text: any) => setPhone_number(text);
 
@@ -37,20 +42,22 @@ const SignUpScreen = () => {
   };
 
   async function signUp() {
-    saveUsername();
-    try {
-      const { user } = await Auth.signUp({
-        username,
-        password,
-        attributes: {
-          email, // optional
-          phone_number, // optional - E.164 number convention
-          // other custom attributes
-        },
-      });
-      console.log(user);
-    } catch (error) {
-      console.log("error signing up:", error);
+    if (confirmPassword === password) {
+      saveUsername();
+      try {
+        const { user } = await Auth.signUp({
+          username,
+          password,
+          attributes: {
+            email, // optional
+            phone_number, // optional - E.164 number convention
+            // other custom attributes
+          },
+        });
+        console.log(user);
+      } catch (error) {
+        console.log("error signing up:", error);
+      }
     }
   }
 
@@ -81,11 +88,11 @@ const SignUpScreen = () => {
         <VStack space={3} mt="5">
           <FormControl>
             <FormControl.Label>Email</FormControl.Label>
-            <Input />
+            <Input onChangeText={handleChangeEmail} />
           </FormControl>
           <FormControl>
             <FormControl.Label>Password</FormControl.Label>
-            <Input type="password" />
+            <Input onChangeText={handleChangePassword} type="password" />
           </FormControl>
           <FormControl>
             <FormControl.Label>Confirm Password</FormControl.Label>
