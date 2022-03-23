@@ -52,7 +52,7 @@ export default function Navigation({
  * https://reactnavigation.org/docs/modal
  */
 const Stack = createNativeStackNavigator<RootStackParamList>();
-let isSignedIn = true;
+let isSignedIn = false;
 function RootNavigator() {
   return (
     <Stack.Navigator>
