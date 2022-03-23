@@ -11,7 +11,7 @@ import {
   DarkTheme,
 } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import * as React from "react";
+import React, { useState } from "react";
 import { ColorSchemeName, Pressable } from "react-native";
 
 import Colors from "../constants/Colors";
@@ -39,7 +39,6 @@ export default function Navigation({
 }: {
   colorScheme: ColorSchemeName;
 }) {
-  const user = useSelector((state) => state.user);
   return (
     <NavigationContainer
       linking={LinkingConfiguration}
@@ -55,8 +54,11 @@ export default function Navigation({
  * https://reactnavigation.org/docs/modal
  */
 const Stack = createNativeStackNavigator<RootStackParamList>();
-let isSignedIn = false;
+
 function RootNavigator() {
+  const // @ts-ignore
+    user = useSelector((state) => state.user);
+
   return (
     <Stack.Navigator>
       {/* <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
