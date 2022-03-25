@@ -66,7 +66,7 @@ function RootNavigator() {
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
         <Stack.Screen name="Modal" component={ModalScreen} />
       </Stack.Group> */}
-      {user ? (
+      {!user ? (
         <>
           <Stack.Screen
             name="Root"

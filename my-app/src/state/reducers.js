@@ -1,5 +1,5 @@
-import { UPDATE_USERNAME } from "@actions/users";
-import { UPDATE_USERNAME } from "../actions/users";
+import { combineReducers } from "redux";
+import { UPDATE_USERNAME } from "../actions/user";
 
 const user = (user = { username: "" }, action) => {
   switch (action.type) {

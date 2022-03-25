@@ -4,7 +4,7 @@ import { NativeBaseProvider } from "native-base";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import { store, persistor } from "@state/store";
+import { store, persistor } from "./src/state/store";
 
 import useCachedResources from "./hooks/useCachedResources";
 import useColorScheme from "./hooks/useColorScheme";
@@ -14,7 +14,6 @@ import { withAuthenticator } from "aws-amplify-react-native";
 import Amplify from "aws-amplify";
 import awsconfig from "./src/aws-exports";
 Amplify.configure(awsconfig);
-const resourceName = "tree_v1";
 
 function App() {
   const isLoadingComplete = useCachedResources();
@@ -24,7 +23,7 @@ function App() {
     return null;
   } else {
     return (
-      <Provider store={Store}>
+      <Provider store={store}>
         <PersistGate persistor={persistor} loading={null}>
           <SafeAreaProvider>
             <NativeBaseProvider>
