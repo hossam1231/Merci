@@ -33,6 +33,7 @@ import SignInScreen from "../screens/SignInScreen";
 import Authentication from "./Authentication";
 
 import { useSelector } from "react-redux";
+import ForgotPasswordScreen from "../screens/ForgotPasswordScreen";
 
 export default function Navigation({
   colorScheme,
@@ -79,13 +80,25 @@ function RootNavigator() {
       ) : (
         <>
           <Stack.Screen
-            name="Root"
+            name="Splash"
             component={Authentication}
-            options={{ headerShown: false }}
+            options={({ navigation }) => ({ headerShown: false })}
           />
-
-          <Stack.Screen name="SignIn" component={SignInScreen} />
-          <Stack.Screen name="SignUp" component={SignUpScreen} />
+          <Stack.Screen
+            name="SignIn"
+            component={SignInScreen}
+            options={({ navigation }) => ({ headerShown: false })}
+          />
+          <Stack.Screen
+            name="SignUp"
+            component={SignUpScreen}
+            options={({ navigation }) => ({ headerShown: false })}
+          />
+          <Stack.Screen
+            name="ForgotPassword"
+            component={ForgotPasswordScreen}
+            options={({ navigation }) => ({ headerShown: true })}
+          />
         </>
       )}
       <Stack.Screen

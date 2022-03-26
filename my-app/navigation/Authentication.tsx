@@ -15,13 +15,18 @@ import { Dimensions } from "react-native";
 import * as React from "react";
 import { SafeAreaView, StyleSheet, ScrollView, View } from "react-native";
 import Rive, { Alignment, Fit } from "rive-react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
 const resourceName = "flowers";
 
-export default function Authentication() {
+export default function Authentication({
+  // @ts-ignore
+  navigation,
+}) {
   const [fit, setFit] = React.useState(Fit.Cover);
   const [alignment, setAlignment] = React.useState(Alignment.Center);
 
@@ -45,12 +50,26 @@ export default function Authentication() {
           >
             Merci
           </Heading>
-          <Button variant="outline" bg="#410824" w="50%" p="2" mt={10}>
+          <Button
+            onPress={() => navigation.navigate("SignUp")}
+            variant="outline"
+            bg="#410824"
+            w="50%"
+            p="2"
+            mt={10}
+          >
             <Text fontWeight={600} color="white">
               Create an Account
             </Text>
           </Button>
-          <Button variant="outline" bg="#410824" w="50%" p="2" mt={5}>
+          <Button
+            onPress={() => navigation.navigate("SignIn")}
+            variant="outline"
+            bg="#410824"
+            w="50%"
+            p="2"
+            mt={5}
+          >
             <Text fontWeight={600} color="white">
               Sign In
             </Text>

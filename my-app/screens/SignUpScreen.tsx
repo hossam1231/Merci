@@ -62,7 +62,7 @@ const SignUpScreen = () => {
   }
 
   return (
-    <Center w="100%">
+    <Center bg="#361A34" flex="1">
       <Box safeArea p="2" w="90%" maxW="290" py="8">
         <Heading
           size="lg"
