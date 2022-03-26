@@ -15,8 +15,6 @@ import { Dimensions } from "react-native";
 import * as React from "react";
 import { SafeAreaView, StyleSheet, ScrollView, View } from "react-native";
 import Rive, { Alignment, Fit } from "rive-react-native";
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;

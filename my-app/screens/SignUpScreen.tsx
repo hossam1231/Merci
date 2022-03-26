@@ -16,7 +16,10 @@ import {
 } from "native-base";
 import { updateUsername } from "../src/actions/user";
 
-const SignUpScreen = () => {
+const SignUpScreen = (
+  // @ts-ignore
+  navigation
+) => {
   const dispatch = useDispatch();
 
   const [username, setUsername] = useState(String);
@@ -66,7 +69,7 @@ const SignUpScreen = () => {
       <Box safeArea p="2" w="90%" maxW="290" py="8">
         <Heading
           size="lg"
-          color="coolGray.800"
+          color="white"
           _dark={{
             color: "warmGray.50",
           }}
@@ -76,7 +79,7 @@ const SignUpScreen = () => {
         </Heading>
         <Heading
           mt="1"
-          color="coolGray.600"
+          color="white"
           _dark={{
             color: "warmGray.200",
           }}
@@ -87,27 +90,53 @@ const SignUpScreen = () => {
         </Heading>
         <VStack space={3} mt="5">
           <FormControl>
-            <FormControl.Label>Username</FormControl.Label>
-            <Input onChangeText={handleChangeUsername} />
+            <FormControl.Label>
+              <Text color="white">Username</Text>
+            </FormControl.Label>
+            <Input color="white" onChangeText={handleChangeUsername} />
           </FormControl>
           <FormControl>
-            <FormControl.Label>Email</FormControl.Label>
-            <Input onChangeText={handleChangeEmail} />
+            <FormControl.Label>
+              <Text color="white">Email</Text>
+            </FormControl.Label>
+            <Input color="white" onChangeText={handleChangeEmail} />
           </FormControl>
           <FormControl>
-            <FormControl.Label>Password</FormControl.Label>
-            <Input onChangeText={handleChangePassword} type="password" />
+            <FormControl.Label>
+              <Text color="white">Password</Text>
+            </FormControl.Label>
+            <Input
+              color="white"
+              onChangeText={handleChangePassword}
+              type="password"
+            />
           </FormControl>
           <FormControl>
-            <FormControl.Label>Confirm Password</FormControl.Label>
-            <Input onChangeText={handleChangeConfirmPassword} type="password" />
+            <FormControl.Label>
+              <Text color="white"> Confirm Password</Text>
+            </FormControl.Label>
+            <Input
+              color="white"
+              onChangeText={handleChangeConfirmPassword}
+              type="password"
+            />
           </FormControl>
           <FormControl>
-            <FormControl.Label>Phone number</FormControl.Label>
-            <Input onChangeText={handleChangePhone_number} />
+            <FormControl.Label>
+              <Text color="white"> Phone number</Text>
+            </FormControl.Label>
+            <Input color="white" onChangeText={handleChangePhone_number} />
           </FormControl>
-          <Button mt="2" colorScheme="indigo">
-            Sign up
+          <Button
+            onPress={() => {
+              signUp();
+            }}
+            bg="#410824"
+            variant="outline"
+            mt="2"
+            colorScheme="indigo"
+          >
+            <Text color="white">Sign up</Text>
           </Button>
         </VStack>
       </Box>
