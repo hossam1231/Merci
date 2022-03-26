@@ -60,6 +60,7 @@ function RootNavigator() {
   const // @ts-ignore
     user = useSelector((state) => state.user);
 
+  console.log(user);
   return (
     <Stack.Navigator>
       {/* <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
@@ -67,7 +68,7 @@ function RootNavigator() {
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
         <Stack.Screen name="Modal" component={ModalScreen} />
       </Stack.Group> */}
-      {!user ? (
+      {user ? (
         <>
           <Stack.Screen
             name="Root"
