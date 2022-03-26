@@ -1,6 +1,6 @@
-export const UPDATE_USERNAME = "UPDATE_USERNAME";
+export const UPDATE_USER = "UPDATE_USER";
 
-export const updateUsername = (username) => ({
-  type: UPDATE_USERNAME,
-  username,
+export const updateUser = (user) => ({
+  type: UPDATE_USER,
+  user,
 });

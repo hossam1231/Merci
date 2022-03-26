@@ -14,7 +14,7 @@ import {
   HStack,
   Center,
 } from "native-base";
-import { updateUsername } from "../src/actions/user";
+import { updateUser } from "../src/actions/user";
 
 const SignUpScreen = (
   // @ts-ignore
@@ -37,16 +37,15 @@ const SignUpScreen = (
   const handleChangeEmail = (text: any) => setEmail(text);
   const handleChangePhone_number = (text: any) => setPhone_number(text);
 
-  const saveUsername = () => {
+  const saveUser = (user: any) => {
     // in case the username hasnt been updated
-    if (username === "") return;
+    if (user === "") return;
 
-    dispatch(updateUsername(username));
+    dispatch(updateUser(user));
   };
 
   async function signUp() {
     if (confirmPassword === password) {
-      saveUsername();
       try {
         const { user } = await Auth.signUp({
           username,
@@ -57,6 +56,8 @@ const SignUpScreen = (
             // other custom attributes
           },
         });
+
+        saveUser(JSON.stringify(user));
         console.log(user);
       } catch (error) {
         console.log("error signing up:", error);

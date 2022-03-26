@@ -1,10 +1,10 @@
 import { combineReducers } from "redux";
-import { UPDATE_USERNAME } from "../actions/user";
+import { UPDATE_USER } from "../actions/user";
 
-const user = (user = { username: "" }, action) => {
+const user = (user = { user: "" }, action) => {
   switch (action.type) {
-    case UPDATE_USERNAME:
-      return { username: action.username };
+    case UPDATE_USER:
+      return { user: action.user };
     default:
       return user;
   }
