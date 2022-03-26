@@ -1,23 +1,54 @@
-import { Text, View } from "react-native";
-import React, { Component } from "react";
-import { useSelector } from "react-redux";
-import { Box, Center, HStack, ZStack } from "native-base";
-import Rive from "rive-react-native";
+import {
+  ZStack,
+  Box,
+  Text,
+  Center,
+  Button,
+  HStack,
+  Link,
+  Heading,
+  VStack,
+  FormControl,
+  Input,
+} from "native-base";
+import * as React from "react";
+import { SafeAreaView, StyleSheet, ScrollView, View } from "react-native";
+import Rive, { Alignment, Fit } from "rive-react-native";
 
-const resourceName = "flowers"; // file truck_v7.riv
+const resourceName = "flowers";
 
-const Authentication = () => {
+export default function Authentication() {
+  const [fit, setFit] = React.useState(Fit.Cover);
+  const [alignment, setAlignment] = React.useState(Alignment.Center);
+
   return (
     <Box flex="1">
-      <Box flex="1">
-        <Rive
-          autoplay={true}
-          resourceName={resourceName}
-          style={{ width: 1080, height: 2340 }}
-        />
-      </Box>
+      <Rive
+        alignment={alignment}
+        autoplay={true}
+        style={styles.animation}
+        fit={fit}
+        resourceName={resourceName}
+      />
+      <View style={styles.screen}>
+        <Heading>Hello</Heading>
+      </View>
     </Box>
   );
-};
+}
 
-export default Authentication;
+const styles = StyleSheet.create({
+  container: {
+    width: "100%",
+  },
+  animation: {
+    width: "100%",
+    zIndex: 1,
+  },
+  screen: {
+    width: "100%",
+    zIndex: 2,
+    position: "absolute",
+    top: "50%",
+  },
+});

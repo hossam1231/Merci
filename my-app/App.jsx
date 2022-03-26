@@ -13,6 +13,7 @@ import { Button } from "react-native";
 import { withAuthenticator } from "aws-amplify-react-native";
 import Amplify from "aws-amplify";
 import awsconfig from "./src/aws-exports";
+import Authentication from "./navigation/Authentication";
 Amplify.configure(awsconfig);
 
 function App() {
