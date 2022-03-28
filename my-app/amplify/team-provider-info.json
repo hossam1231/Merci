@@ -1,15 +1,15 @@
 {
   "staging": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-merci-staging-91734-authRole",
-      "UnauthRoleArn": "arn:aws:iam::403362287287:role/amplify-merci-staging-91734-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::403362287287:role/amplify-merci-staging-91734-authRole",
+      "AuthRoleName": "amplify-merci-staging-133113-authRole",
+      "UnauthRoleArn": "arn:aws:iam::403362287287:role/amplify-merci-staging-133113-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::403362287287:role/amplify-merci-staging-133113-authRole",
       "Region": "us-east-1",
-      "DeploymentBucketName": "amplify-merci-staging-91734-deployment",
-      "UnauthRoleName": "amplify-merci-staging-91734-unauthRole",
-      "StackName": "amplify-merci-staging-91734",
-      "StackId": "arn:aws:cloudformation:us-east-1:403362287287:stack/amplify-merci-staging-91734/139c6c70-aa8a-11ec-bafc-0a06e6b8ef69",
-      "AmplifyAppId": "dfoygtewyns4z"
+      "DeploymentBucketName": "amplify-merci-staging-133113-deployment",
+      "UnauthRoleName": "amplify-merci-staging-133113-unauthRole",
+      "StackName": "amplify-merci-staging-133113",
+      "StackId": "arn:aws:cloudformation:us-east-1:403362287287:stack/amplify-merci-staging-133113/56baa840-ae9b-11ec-bc6f-0a846f7aa1d5",
+      "AmplifyAppId": "d2e4ge1u26iur7"
     },
     "categories": {
       "auth": {

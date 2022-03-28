@@ -1,0 +1,8 @@
+type ADW @model @auth(rules: [{allow: public}]) {
+  id: ID!
+}
+
+type Green @model @auth(rules: [{allow: public}]) {
+  id: ID!
+}
+ 
