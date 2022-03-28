@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useLayoutEffect } from "react";
 import { StatusBar } from "expo-status-bar";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
@@ -8,7 +8,7 @@ import { NativeBaseProvider, extendTheme } from "native-base";
 import useCachedResources from "./hooks/useCachedResources";
 import useColorScheme from "./hooks/useColorScheme";
 import Navigation from "./navigation";
-import { Button } from "react-native";
+import { Button, Text } from "react-native";
 import { withAuthenticator } from "aws-amplify-react-native";
 import Amplify from "aws-amplify";
 import awsconfig from "./src/aws-exports";
