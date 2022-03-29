@@ -11,12 +11,14 @@ import {
   DarkTheme,
 } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+// @ts-ignore
 import React, { useState } from "react";
 import { ColorSchemeName, Pressable } from "react-native";
 
 import Colors from "../constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
 import ModalScreen from "../screens/ModalScreen";
+// @ts-ignore
 import ProfileScreen from "../screens/ProfileScreen";
 import NotFoundScreen from "../screens/NotFoundScreen";
 import TabOneScreen from "../screens/TabOneScreen";
@@ -34,6 +36,13 @@ import Authentication from "./Authentication";
 
 import { useSelector } from "react-redux";
 import ForgotPasswordScreen from "../screens/ForgotPasswordScreen";
+import RippleScreen from "../screens/RippleScreen";
+import HomeScreen from "../screens/HomeScreen";
+import { LogBox } from "react-native";
+
+LogBox.ignoreLogs([
+  "[react-native-gesture-handler] Seems like you're using an old API with gesture components, check out new Gestures system!",
+]);
 
 export default function Navigation({
   colorScheme,
@@ -75,7 +84,7 @@ function RootNavigator() {
             component={BottomTabNavigator}
             options={{ headerShown: false }}
           />
-          <Stack.Screen name="Profile" component={ProfileScreen} />
+
           <Stack.Screen name="Settings" component={SettingsScreen} />
         </>
       ) : (
@@ -86,19 +95,24 @@ function RootNavigator() {
             options={({ navigation }) => ({ headerShown: false })}
           />
           <Stack.Screen
-            name="SignIn"
-            component={SignInScreen}
+            name="Ripple"
+            component={RippleScreen}
             options={({ navigation }) => ({ headerShown: false })}
           />
           <Stack.Screen
-            name="SignUp"
-            component={SignUpScreen}
+            name="Home"
+            component={HomeScreen}
             options={({ navigation }) => ({ headerShown: false })}
           />
           <Stack.Screen
             name="ForgotPassword"
             component={ForgotPasswordScreen}
             options={({ navigation }) => ({ headerShown: true })}
+          />
+          <Stack.Screen
+            name="Profile"
+            component={ProfileScreen}
+            options={({ navigation }) => ({ headerShown: false })}
           />
         </>
       )}

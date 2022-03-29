@@ -22,9 +22,9 @@ export type RootStackParamList = {
   NotFound: undefined;
   Profile: undefined;
   Settings: undefined;
-  SignIn: undefined;
-  SignUp: undefined;
   Splash: undefined;
+  Ripple: undefined;
+  Home: undefined;
   ForgotPassword: undefined;
 };
 

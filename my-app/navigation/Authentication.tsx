@@ -48,44 +48,20 @@ export default function Authentication({
           >
             Merci
           </Heading>
+
           <Button
-            onPress={() => navigation.navigate("SignUp")}
-            variant="outline"
-            bg="#410824"
-            w="50%"
-            p="2"
-            mt={10}
-          >
-            <Text fontWeight={600} color="white">
-              Create an Account
-            </Text>
-          </Button>
-          <Button
-            onPress={() => navigation.navigate("SignIn")}
-            variant="outline"
-            bg="#410824"
-            w="50%"
+            position="absolute"
+            bottom="5%"
+            onPress={() => navigation.navigate("Ripple")}
+            bg="#27142A"
+            w="90%"
             p="2"
             mt={5}
+            borderColor="white"
+            borderWidth="1"
           >
-            <Text fontWeight={600} color="white">
-              Sign In
-            </Text>
-          </Button>
-
-          <Text color="white" mt="10px" fontFamily="body" fontWeight={200}>
-            or
-          </Text>
-
-          <Button variant="ghost">
-            <Text
-              color="white"
-              mt="10px"
-              fontFamily="body"
-              fontWeight={400}
-              underline
-            >
-              Skip for now
+            <Text fontWeight={100} fontFamily="body" color="white">
+              Get Started
             </Text>
           </Button>
         </Center>

@@ -1,8 +1,40 @@
-type ADW @model @auth(rules: [{allow: public}]) {
+type Product @model @auth(rules: [{allow: public}]) {
   id: ID!
+  name: String
+  price: String
+  weight: String
+  brand: String
+  shops: [Shop] @manyToMany(relationName: "ShopProduct")
+  promotions: [Promotion] @manyToMany(relationName: "PromotionProduct")
 }
 
-type Green @model @auth(rules: [{allow: public}]) {
+type User @model @auth(rules: [{allow: public}]) {
   id: ID!
+  image: String
+  Shop: Shop @hasOne
+}
+
+type Shop @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  location: String
+  logo: String
+  preperation: String
+  delivery: String
+  layout: String
+  open_hours: String
+  closed_hours: String
+  Products: [Product] @manyToMany(relationName: "ShopProduct")
+}
+
+type Promotion @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  Promo: String
+  quantity: String
+  merci_exclusive: String
+  min_purchase: String
+  max_purchase: String
+  expiration: String
+  Products: [Product] @manyToMany(relationName: "PromotionProduct")
 }
  

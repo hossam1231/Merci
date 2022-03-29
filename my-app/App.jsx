@@ -13,7 +13,16 @@ import { withAuthenticator } from "aws-amplify-react-native";
 import Amplify from "aws-amplify";
 import awsconfig from "./src/aws-exports";
 import Authentication from "./navigation/Authentication";
+import Test from "./Test";
+import * as ErrorRecovery from "expo-error-recovery";
 Amplify.configure(awsconfig);
+import * as Sentry from "sentry-expo";
+
+Sentry.init({
+  dsn: "https://a355c9fbd70548debb6088a2482f39be@o1181703.ingest.sentry.io/6295296",
+  enableInExpoDevelopment: true,
+  debug: true, // If `true`, Sentry will try to print out useful debugging information if something goes wrong with sending the event. Set it to `false` in production
+});
 
 const theme = extendTheme({
   fontConfig: {
@@ -63,6 +72,7 @@ function App() {
           <SafeAreaProvider>
             <NativeBaseProvider theme={theme}>
               <Navigation colorScheme={colorScheme} />
+              {/* <Test /> */}
               <StatusBar />
             </NativeBaseProvider>
           </SafeAreaProvider>
