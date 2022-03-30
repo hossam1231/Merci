@@ -24,6 +24,7 @@ export type RootStackParamList = {
   Settings: undefined;
   Splash: undefined;
   Ripple: undefined;
+  RippleRev: undefined;
   Home: undefined;
   ForgotPassword: undefined;
 };

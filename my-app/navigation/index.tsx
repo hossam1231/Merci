@@ -39,6 +39,7 @@ import ForgotPasswordScreen from "../screens/ForgotPasswordScreen";
 import RippleScreen from "../screens/RippleScreen";
 import HomeScreen from "../screens/HomeScreen";
 import { LogBox } from "react-native";
+import RippleRevScreen from "../screens/RippleRevScreen";
 
 LogBox.ignoreLogs([
   "[react-native-gesture-handler] Seems like you're using an old API with gesture components, check out new Gestures system!",
@@ -69,7 +70,7 @@ function RootNavigator() {
   const // @ts-ignore
     user = useSelector((state) => state.user);
 
-  console.log(user);
+  console.log(user.user.userDataKey);
   return (
     <Stack.Navigator>
       {/* <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
@@ -77,7 +78,7 @@ function RootNavigator() {
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
         <Stack.Screen name="Modal" component={ModalScreen} />
       </Stack.Group> */}
-      {user === "" ? (
+      {user.user.userDataKey ? (
         <>
           <Stack.Screen
             name="Root"
@@ -86,6 +87,11 @@ function RootNavigator() {
           />
 
           <Stack.Screen name="Settings" component={SettingsScreen} />
+          <Stack.Screen
+            name="Profile"
+            component={ProfileScreen}
+            options={({ navigation }) => ({ headerShown: false })}
+          />
         </>
       ) : (
         <>
@@ -94,16 +100,7 @@ function RootNavigator() {
             component={Authentication}
             options={({ navigation }) => ({ headerShown: false })}
           />
-          <Stack.Screen
-            name="Ripple"
-            component={RippleScreen}
-            options={({ navigation }) => ({ headerShown: false })}
-          />
-          <Stack.Screen
-            name="Home"
-            component={HomeScreen}
-            options={({ navigation }) => ({ headerShown: false })}
-          />
+
           <Stack.Screen
             name="ForgotPassword"
             component={ForgotPasswordScreen}
@@ -117,9 +114,24 @@ function RootNavigator() {
         </>
       )}
       <Stack.Screen
+        name="Home"
+        component={HomeScreen}
+        options={({ navigation }) => ({ headerShown: false })}
+      />
+      <Stack.Screen
         name="NotFound"
         component={NotFoundScreen}
         options={{ title: "Oops!" }}
+      />
+      <Stack.Screen
+        name="Ripple"
+        component={RippleScreen}
+        options={({ navigation }) => ({ headerShown: false })}
+      />
+      <Stack.Screen
+        name="RippleRev"
+        component={RippleRevScreen}
+        options={({ navigation }) => ({ headerShown: false })}
       />
     </Stack.Navigator>
   );

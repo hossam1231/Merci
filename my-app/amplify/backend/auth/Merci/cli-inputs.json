@@ -3,7 +3,7 @@
   "cognitoConfig": {
     "identityPoolName": "testAuthIdentityPool",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "mercicc4d3117",
+    "resourceNameTruncated": "mercic5190795",
     "userPoolName": "Merci",
     "autoVerifiedAttributes": [
       "email"
@@ -24,21 +24,21 @@
       "Requires Symbols",
       "Requires Uppercase"
     ],
-    "requiredAttributes": [],
+    "requiredAttributes": [
+      "email",
+      "phone_number"
+    ],
     "aliasAttributes": [],
     "userpoolClientGenerateSecret": false,
     "userpoolClientRefreshTokenValidity": 30,
     "userpoolClientWriteAttributes": [],
     "userpoolClientReadAttributes": [],
-    "userpoolClientLambdaRole": "Mercicc4d3117_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "Mercic5190795_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "cc4d3117",
+    "sharedId": "c5190795",
     "resourceName": "Merci",
     "authSelections": "identityPoolAndUserPool",
     "serviceName": "Cognito",
-    "usernameAttributes": [
-      "email"
-    ],
     "useDefault": "manual",
     "userPoolGroups": false,
     "userPoolGroupList": [],
