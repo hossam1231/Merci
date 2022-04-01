@@ -29,6 +29,7 @@
     "expo-asset": "~8.4.6",
     "expo-constants": "~13.0.1",
     "expo-device": "~4.1.0",
+    "expo-error-recovery": "~3.0.4",
     "expo-font": "~10.0.4",
     "expo-linking": "~3.0.0",
     "expo-splash-screen": "~0.14.1",
@@ -41,6 +42,7 @@
     "react-dom": "17.0.1",
     "react-native": "0.64.3",
     "react-native-gesture-handler": "^2.3.2",
+    "react-native-maps": "^0.29.4",
     "react-native-reanimated": "2.4.1",
     "react-native-safe-area-context": "3.3.2",
     "react-native-screens": "~3.10.1",
@@ -51,8 +53,7 @@
     "redux-thunk": "^2.4.1",
     "rive-react-native": "^2.1.36",
     "sentry-expo": "^4.0.0",
-    "yarn": "^1.22.18",
-    "expo-error-recovery": "~3.0.4"
+    "yarn": "^1.22.18"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

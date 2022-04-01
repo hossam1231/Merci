@@ -12,7 +12,6 @@ import { Button, Text } from "react-native";
 import { withAuthenticator } from "aws-amplify-react-native";
 import Amplify from "aws-amplify";
 import awsconfig from "./src/aws-exports";
-import Authentication from "./navigation/Authentication";
 import Test from "./Test";
 import * as ErrorRecovery from "expo-error-recovery";
 Amplify.configure(awsconfig);

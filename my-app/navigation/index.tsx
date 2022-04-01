@@ -32,7 +32,7 @@ import LinkingConfiguration from "./LinkingConfiguration";
 import SettingsScreen from "../screens/SettingsScreen";
 import SignUpScreen from "../screens/SignUpScreen";
 import SignInScreen from "../screens/SignInScreen";
-import Authentication from "./Authentication";
+import Welcome from "./Welcome";
 
 import { useSelector } from "react-redux";
 import ForgotPasswordScreen from "../screens/ForgotPasswordScreen";
@@ -70,7 +70,7 @@ function RootNavigator() {
   const // @ts-ignore
     user = useSelector((state) => state.user);
 
-  console.log(user.user.userDataKey);
+  console.log("userDataKey", user.user.userDataKey);
   return (
     <Stack.Navigator>
       {/* <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
@@ -80,12 +80,6 @@ function RootNavigator() {
       </Stack.Group> */}
       {user.user.userDataKey ? (
         <>
-          <Stack.Screen
-            name="Root"
-            component={BottomTabNavigator}
-            options={{ headerShown: false }}
-          />
-
           <Stack.Screen name="Settings" component={SettingsScreen} />
           <Stack.Screen
             name="Profile"
@@ -97,18 +91,24 @@ function RootNavigator() {
         <>
           <Stack.Screen
             name="Splash"
-            component={Authentication}
+            component={Welcome}
             options={({ navigation }) => ({ headerShown: false })}
           />
 
-          <Stack.Screen
+          {/* <Stack.Screen
             name="ForgotPassword"
             component={ForgotPasswordScreen}
             options={({ navigation }) => ({ headerShown: true })}
+          /> */}
+
+          <Stack.Screen
+            name="Ripple"
+            component={RippleScreen}
+            options={({ navigation }) => ({ headerShown: false })}
           />
           <Stack.Screen
-            name="Profile"
-            component={ProfileScreen}
+            name="RippleRev"
+            component={RippleRevScreen}
             options={({ navigation }) => ({ headerShown: false })}
           />
         </>
@@ -118,20 +118,16 @@ function RootNavigator() {
         component={HomeScreen}
         options={({ navigation }) => ({ headerShown: false })}
       />
+      {/* <Stack.Screen
+        name="Root"
+        component={BottomTabNavigator}
+        options={{ headerShown: false }}
+      /> */}
+
       <Stack.Screen
         name="NotFound"
         component={NotFoundScreen}
         options={{ title: "Oops!" }}
-      />
-      <Stack.Screen
-        name="Ripple"
-        component={RippleScreen}
-        options={({ navigation }) => ({ headerShown: false })}
-      />
-      <Stack.Screen
-        name="RippleRev"
-        component={RippleRevScreen}
-        options={({ navigation }) => ({ headerShown: false })}
       />
     </Stack.Navigator>
   );

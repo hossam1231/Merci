@@ -21,7 +21,7 @@ const windowHeight = Dimensions.get("window").height;
 
 const resourceName = "flowers";
 
-export default function Authentication({
+export default function Welcome({
   // @ts-ignore
   navigation,
 }) {
