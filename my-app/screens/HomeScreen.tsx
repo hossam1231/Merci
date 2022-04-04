@@ -23,6 +23,10 @@ function HomeScreen({
   // @ts-ignore
   navigation,
 }) {
+  const ToProfile = () => {
+    navigation.navigate("Profile");
+  };
+
   return (
     <VStack alignItems="center" p="5" flex="1">
       <HStack h="100">
@@ -33,7 +37,7 @@ function HomeScreen({
           />
           {/* shake to use camera */}
           <IconButton
-            onPress={() => navigation.navigate("Profile")}
+            onPress={() => ToProfile()}
             icon={<Icon as={AntDesign} name="user" />}
             borderRadius="full"
           />

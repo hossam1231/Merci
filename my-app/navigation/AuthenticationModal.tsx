@@ -233,19 +233,26 @@ export const Create = ({
     dispatch(updateUser(profile));
   };
 
+  async function resendConfirmationCode() {
+    try {
+      // @ts-ignore
+      await Auth.resendSignUp(username);
+      console.log("code resent successfully");
+    } catch (err) {
+      console.log("error resending code: ", err);
+    }
+  }
+
   async function confirmSignUp() {
     try {
-      await Auth.confirmSignUp(
-        // @ts-ignore
-        username,
-        code
-      );
+      // @ts-ignore
+      await Auth.confirmSignUp(username, code);
       console.log("confirmed");
-      navigation.navigate("RippleRev");
       saveUser();
     } catch (error) {
       console.log("error confirming sign up", error);
     }
+    navigation.navigate("RippleRev");
   }
 
   return (
@@ -346,6 +353,10 @@ export const Create = ({
                   onChangeText={handleChangeCode}
                 />
               </FormControl>
+
+              <Link onPress={() => resendConfirmationCode()}>
+                <Text fontSize="xs">Send a new code?</Text>
+              </Link>
             </VStack>
             <Button onPress={() => confirmSignUp()} bg="#27142A" mt="5">
               <Text color="white">Confirm</Text>
@@ -374,6 +385,16 @@ export const SignIn = (props: any) => {
   const handleChangePhone_number = (text: any) => setPhone_number(text);
 
   const { page, setPage } = props;
+
+  async function signIn() {
+    try {
+      // @ts-ignore
+      const user = await Auth.signIn(username, password);
+    } catch (error) {
+      console.log("error signing in", error);
+    }
+  }
+
   return (
     <Center w="100%">
       <Box safeArea p="2" py="8" w="90%" maxW="290">
@@ -404,8 +425,8 @@ export const SignIn = (props: any) => {
 
         <VStack space={3} mt="5">
           <FormControl>
-            <FormControl.Label>Email ID</FormControl.Label>
-            <Input onChangeText={handleChangeEmail} />
+            <FormControl.Label>Username</FormControl.Label>
+            <Input onChangeText={handleChangeUsername} />
           </FormControl>
           <FormControl>
             <FormControl.Label>Password</FormControl.Label>
@@ -422,7 +443,7 @@ export const SignIn = (props: any) => {
               Forget Password?
             </Link>
           </FormControl>
-          <Button bg="#27142A" mt="2">
+          <Button onPress={() => signIn()} bg="#27142A" mt="2">
             <Text color="white">Sign in</Text>
           </Button>
           <HStack mt="6" justifyContent="center">

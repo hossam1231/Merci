@@ -82,11 +82,6 @@ function RootNavigator() {
       {user.user.userDataKey ? (
         <>
           <Stack.Screen name="Settings" component={SettingsScreen} />
-          <Stack.Screen
-            name="Profile"
-            component={ProfileScreen}
-            options={({ navigation }) => ({ headerShown: false })}
-          />
         </>
       ) : (
         <>
@@ -95,25 +90,18 @@ function RootNavigator() {
             component={Welcome}
             options={({ navigation }) => ({ headerShown: false })}
           />
-
-          {/* <Stack.Screen
-            name="ForgotPassword"
-            component={ForgotPasswordScreen}
-            options={({ navigation }) => ({ headerShown: true })}
-          /> */}
-
           <Stack.Screen
             name="Ripple"
             component={RippleScreen}
             options={({ navigation }) => ({ headerShown: false })}
           />
-          <Stack.Screen
-            name="RippleRev"
-            component={RippleRevScreen}
-            options={({ navigation }) => ({ headerShown: false })}
-          />
         </>
       )}
+      <Stack.Screen
+        name="RippleRev"
+        component={RippleRevScreen}
+        options={({ navigation }) => ({ headerShown: false })}
+      />
       <Stack.Screen
         name="Home"
         component={HomeScreen}
@@ -124,12 +112,11 @@ function RootNavigator() {
         component={Map}
         options={({ navigation }) => ({ headerShown: false })}
       />
-      {/* <Stack.Screen
-        name="Root"
-        component={BottomTabNavigator}
-        options={{ headerShown: false }}
-      /> */}
-
+      <Stack.Screen
+        name="Profile"
+        component={ProfileScreen}
+        options={({ navigation }) => ({ headerShown: false })}
+      />
       <Stack.Screen
         name="NotFound"
         component={NotFoundScreen}
