@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "my-app",
-    "slug": "my-app",
+    "name": "Merci",
+    "slug": "Merci-Semptia",
     "version": "1.0.0",
     "orientation": "portrait",
     "hooks": {
@@ -29,14 +29,24 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+       "bundleIdentifier": "com.semptia.merci",
+            "config": {
+                "googleMapsApiKey": "AIzaSyCddf0K1YC1JrgpGGjOkqC5n4XRL5gOmQQ"
+            }
+        }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.semptia.merci"
+      "package": "com.semptia.merci",
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyCddf0K1YC1JrgpGGjOkqC5n4XRL5gOmQQ"
+        }
+      }
     },
     "web": {
       "favicon": "./assets/images/favicon.png"

@@ -3,6 +3,7 @@ import {
   Box,
   HStack,
   Text,
+  Center,
   IconButton,
   VStack,
   Icon,
@@ -13,6 +14,7 @@ import { AntDesign, Ionicons } from "@expo/vector-icons";
 import { useSelector } from "react-redux";
 import InfoScrollView from "../components/home/InfoScrollView";
 import { Dimensions } from "react-native";
+import CategoriesScrollView from "../components/home/CategoriesScrollView";
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
@@ -40,7 +42,7 @@ function HomeScreen({
         <HStack></HStack>
       </HStack>
       <Box flex="1">
-        <HStack w="100%" px="10" alignItems="center">
+        <HStack w="100%" px="5" alignItems="center">
           <Text mr="5">Instore</Text>
           <Text mr="5">To your door</Text>
           <Text mr="5">Rewards</Text>
@@ -49,7 +51,7 @@ function HomeScreen({
           <Input
             placeholder="Search"
             variant="filled"
-            width="90%"
+            width="100%"
             borderRadius="10"
             py="1"
             px="2"
@@ -64,14 +66,51 @@ function HomeScreen({
             }
           />
         </HStack>
+        <Box h="150">
+          <InfoScrollView />
+        </Box>
+        <HStack w="100%" h="75" bg="black">
+          <HStack
+            alignItems="center"
+            px="5"
+            justifyContent="space-between"
+            flex="1"
+          >
+            <Box h="30" w="30" bg="white">
+              <IconButton />
+            </Box>
 
-        <InfoScrollView />
+            <Box>
+              <Text>Go to map view</Text>
+              <Text>See pickup options near you</Text>
+            </Box>
 
-        <HStack p="10" w={windowWidth} h="75">
-          <Box px="5" w="50" h="50" bg="black"></Box>
-
-          <Text color="black">View on map</Text>
+            <Box
+              justifyContent="center"
+              alignItems="center"
+              h="30"
+              w="30"
+              bg="white"
+            >
+              <IconButton
+                onPress={() => navigation.navigate("Map")}
+                icon={<Icon as={AntDesign} name="arrowright" />}
+                borderRadius="full"
+              />
+            </Box>
+          </HStack>
         </HStack>
+        <Box h="150">
+          <CategoriesScrollView />
+        </Box>
+        <Center flex="1" bg="black">
+          <Text>oh no!</Text>
+          <Text>You have no favorites</Text>
+          <IconButton
+            icon={<Icon as={AntDesign} name="hearto" />}
+            borderRadius="full"
+          />
+        </Center>
       </Box>
     </VStack>
   );

@@ -8,7 +8,7 @@ import {
 } from "native-base";
 import React from "react";
 
-const InfoScrollView = () => {
+const CategoriesScrollView = () => {
   const { colors } = useTheme();
   return (
     <ScrollView
@@ -28,7 +28,7 @@ const InfoScrollView = () => {
               <Center
                 key={key}
                 mx="2"
-                w="100"
+                w="250"
                 h="100"
                 py="4"
                 bg={`cyan.${key}`}
@@ -42,4 +42,4 @@ const InfoScrollView = () => {
   );
 };
 
-export default InfoScrollView;
+export default CategoriesScrollView;

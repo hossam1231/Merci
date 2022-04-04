@@ -40,6 +40,7 @@ import RippleScreen from "../screens/RippleScreen";
 import HomeScreen from "../screens/HomeScreen";
 import { LogBox } from "react-native";
 import RippleRevScreen from "../screens/RippleRevScreen";
+import Map from "../components/map/Map";
 
 LogBox.ignoreLogs([
   "[react-native-gesture-handler] Seems like you're using an old API with gesture components, check out new Gestures system!",
@@ -116,6 +117,11 @@ function RootNavigator() {
       <Stack.Screen
         name="Home"
         component={HomeScreen}
+        options={({ navigation }) => ({ headerShown: false })}
+      />
+      <Stack.Screen
+        name="Map"
+        component={Map}
         options={({ navigation }) => ({ headerShown: false })}
       />
       {/* <Stack.Screen
