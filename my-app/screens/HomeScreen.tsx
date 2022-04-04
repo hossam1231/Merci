@@ -32,7 +32,6 @@ function HomeScreen({
             borderRadius="full"
           />
           {/* shake to use camera */}
-
           <IconButton
             onPress={() => navigation.navigate("Profile")}
             icon={<Icon as={AntDesign} name="user" />}

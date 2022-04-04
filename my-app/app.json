@@ -29,12 +29,7 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true,
-       "bundleIdentifier": "com.semptia.merci",
-            "config": {
-                "googleMapsApiKey": "AIzaSyCddf0K1YC1JrgpGGjOkqC5n4XRL5gOmQQ"
-            }
-        }
+      "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
