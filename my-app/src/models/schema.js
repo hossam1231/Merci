@@ -348,13 +348,6 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
-                "image": {
-                    "name": "image",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
                 "Shop": {
                     "name": "Shop",
                     "isArray": false,
@@ -368,6 +361,13 @@ export const schema = {
                         "associatedWith": "id",
                         "targetName": "userShopId"
                     }
+                },
+                "merchant": {
+                    "name": "merchant",
+                    "isArray": false,
+                    "type": "Boolean",
+                    "isRequired": false,
+                    "attributes": []
                 },
                 "createdAt": {
                     "name": "createdAt",
@@ -405,7 +405,10 @@ export const schema = {
                     "properties": {
                         "rules": [
                             {
-                                "allow": "public",
+                                "provider": "userPools",
+                                "ownerField": "owner",
+                                "allow": "owner",
+                                "identityClaim": "cognito:username",
                                 "operations": [
                                     "create",
                                     "update",
@@ -545,5 +548,5 @@ export const schema = {
     },
     "enums": {},
     "nonModels": {},
-    "version": "d9863cb42554874c2d1da02f02dc08f8"
+    "version": "61e88f080ebc5b2742850187b7babc3f"
 };

@@ -3,7 +3,7 @@
   "serviceConfiguration": {
     "apiName": "Merci",
     "serviceName": "AppSync",
-    "gqlSchemaPath": "/tmp/amplify-e5e1ef50-4eb0-4c5c-9e31-1e5ed2f58a52/amplify/backend/api/Merci/schema.graphql",
+    "gqlSchemaPath": "/tmp/amplify-294d2651-821a-4b18-a81a-8ff79e687b50/amplify/backend/api/Merci/schema.graphql",
     "defaultAuthType": {
       "mode": "API_KEY",
       "keyDescription": "api key description",
@@ -12,6 +12,10 @@
     "additionalAuthTypes": [
       {
         "mode": "AWS_IAM"
+      },
+      {
+        "mode": "AMAZON_COGNITO_USER_POOLS",
+        "cognitoUserPoolId": "authMerci"
       }
     ],
     "conflictResolution": {

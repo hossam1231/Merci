@@ -8,10 +8,10 @@ type Product @model @auth(rules: [{allow: public}]) {
   promotions: [Promotion] @manyToMany(relationName: "PromotionProduct")
 }
 
-type User @model @auth(rules: [{allow: public}]) {
+type User @model @auth(rules: [{allow: owner}]) {
   id: ID!
-  image: String
   Shop: Shop @hasOne
+  merchant: Boolean
 }
 
 type Shop @model @auth(rules: [{allow: public}]) {

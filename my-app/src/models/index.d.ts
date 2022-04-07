@@ -76,8 +76,8 @@ export declare class Promotion {
 
 export declare class User {
   readonly id: string;
-  readonly image?: string | null;
   readonly Shop?: Shop | null;
+  readonly merchant?: boolean | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   readonly userShopId?: string | null;
