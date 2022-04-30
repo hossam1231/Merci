@@ -19,10 +19,10 @@ export default function App() {
     return (
       <NativeBaseProvider>
         <SafeAreaProvider>
-          <Box flex="1" safeArea>
+         
             <Navigation />
             {/* <SearchScreen /> */}
-          </Box>
+         
 
           {/* ORRRRR */}
 

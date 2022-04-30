@@ -16,7 +16,7 @@ import { useNavigation } from "@react-navigation/native";
 
 const SearchScreen = () => {
   return (
-    <Box flex="1">
+    <Box safeArea flex="1">
       <SearchSegment />
       <ResultsBox />
       <ToCamera />

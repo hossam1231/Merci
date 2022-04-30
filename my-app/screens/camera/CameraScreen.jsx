@@ -9,7 +9,7 @@ import {
   Button,
 } from "react-native";
 import { BarCodeScanner } from "expo-barcode-scanner";
-import { Box } from "native-base";
+import { Box , ZStack } from "native-base";
 
 export default function Camera() {
   const [hasPermission, setHasPermission] =
@@ -47,6 +47,7 @@ export default function Camera() {
 
   return (
     <Box flex="1">
+
       <BarCodeScanner
         onBarCodeScanned={
           scanned
@@ -62,5 +63,6 @@ export default function Camera() {
         />
       )}
     </Box>
+   
   );
 }

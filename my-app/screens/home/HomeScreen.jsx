@@ -26,7 +26,7 @@ export default function HomeScreen() {
   const [tab, setTab] = useState("Instore");
 
   return (
-    <Box mt="5" p="5">
+    <Box safeArea p="5">
       <TopBar />
       <TabSwitcher tab={tab} setTab={setTab} />
 
@@ -36,17 +36,17 @@ export default function HomeScreen() {
   );
 }
 
-export const RewardsTab = () => {
+export const RewardsView = () => {
   // rewards could be on the map showing who has rewards and how many
   // in addition to products
   return <></>;
 };
 
-export const ToYourDoorTab = () => {
+export const ToYourDoorView = () => {
   return <></>;
 };
 
-export const InstoreTab = () => {
+export const InstoreView = () => {
   return (
     <>
       <ForYouSection />
@@ -59,9 +59,9 @@ export const InstoreTab = () => {
 export const TabView = ({ tab }) => {
   return (
     <>
-      {tab == "Instore" && <InstoreTab />}
-      {tab == "To your door" && <ToYourDoorTab />}
-      {tab == "To your door" && <RewardsTab />}
+      {tab == "Instore" && <InstoreView />}
+      {tab == "To your door" && <ToYourDoorView />}
+      {tab == "To your door" && <RewardsView />}
     </>
   );
 };
@@ -282,7 +282,7 @@ export const TopBar = () => {
       <Box>
         <IconButton
           onPress={() =>
-            navigation.navigate("Camera")
+            navigation.push("Camera")
           }
           icon={
             <Icon as={AntDesign} name="camera" />
@@ -320,6 +320,9 @@ export const TopBar = () => {
 
       <HStack>
         <IconButton
+        onPress={() =>
+          navigation.navigate("MyFavorites")
+        }
           mr="1"
           icon={
             <Icon as={AntDesign} name="heart" />
@@ -332,7 +335,7 @@ export const TopBar = () => {
         />
         <IconButton
           onPress={() =>
-            navigation.navigate("Modal")
+            navigation.navigate("MyAccount")
           }
           icon={
             <Icon as={AntDesign} name="smileo" />
