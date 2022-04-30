@@ -1,9 +1,13 @@
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import { NativeBaseProvider } from "native-base";
+import {
+  Box,
+  NativeBaseProvider,
+} from "native-base";
 import useCachedResources from "./hooks/useCachedResources";
 import useColorScheme from "./hooks/useColorScheme";
 import Navigation from "./navigation";
+import SearchScreen from "./screens/search/SearchScreen";
 
 export default function App() {
   const isLoadingComplete = useCachedResources();
@@ -15,11 +19,12 @@ export default function App() {
     return (
       <NativeBaseProvider>
         <SafeAreaProvider>
-          <Navigation />
+          <Box flex="1" safeArea>
+            <Navigation />
+            {/* <SearchScreen /> */}
+          </Box>
 
           {/* ORRRRR */}
-
-          {/* <Tapp /> */}
 
           <StatusBar />
         </SafeAreaProvider>

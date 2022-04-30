@@ -4,7 +4,7 @@ import HomeScreen from "../screens/home/HomeScreen";
 import ModalScreen from "../screens/ModalScreen";
 import NotFoundScreen from "../screens/NotFoundScreen";
 import { NavigationContainer } from "@react-navigation/native";
-import Camera from "../screens/camera/Camera";
+import Camera from "../screens/camera/CameraScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -38,6 +38,7 @@ export default function Navigation({
           <Stack.Screen
             name="Modal"
             component={ModalScreen}
+            options={{ title: "My account" }}
           />
         </Stack.Group>
       </Stack.Navigator>
