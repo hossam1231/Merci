@@ -1,21 +1,9 @@
 {
   "expo": {
-    "name": "Merci",
-    "slug": "Merci-Semptia",
+    "name": "my-app",
+    "slug": "my-app",
     "version": "1.0.0",
     "orientation": "portrait",
-    "hooks": {
-      "postPublish": [
-        {
-          "file": "sentry-expo/upload-sourcemaps",
-          "config": {
-            "organization": "semptia1",
-            "project": "merci",
-            "authToken": "33ba7ecd2f034d07b13cf0411622b3017f4225f8833c40debfbd026d7c950abc"
-          }
-        }
-      ]
-    },
     "icon": "./assets/images/icon.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
@@ -37,20 +25,10 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      },
-      "package": "com.semptia.merci",
-      "config": {
-        "googleMaps": {
-          "apiKey": "AIzaSyCddf0K1YC1JrgpGGjOkqC5n4XRL5gOmQQ"
-        }
       }
     },
     "web": {
       "favicon": "./assets/images/favicon.png"
-    },
-    "plugins": [
-      "sentry-expo"
-    ],
-    "description": ""
+    }
   }
 }
