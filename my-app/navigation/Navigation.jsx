@@ -1,5 +1,5 @@
+import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import * as React from "react";
 import HomeScreen from "../screens/home/HomeScreen";
 import NotFoundScreen from "../screens/NotFoundScreen";
 import { NavigationContainer } from "@react-navigation/native";
