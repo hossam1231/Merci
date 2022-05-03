@@ -9,13 +9,14 @@ import {
 	ScrollView,
 	Badge,
 	Heading,
+	Pressable,
 	IconButton,
 } from "native-base";
 import React, { useState } from "react";
-import { Pressable } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { AntDesign, Ionicons } from "@expo/vector-icons";
 import styles from "./HomeScreen.StyleSheet.js";
+import * as Haptics from "expo-haptics";
 
 export default function HomeScreen() {
 	const navigation = useNavigation();
@@ -23,7 +24,7 @@ export default function HomeScreen() {
 	const [tab, setTab] = useState("Instore");
 
 	return (
-		<Box bg="#ecf0f1" safeArea p="5" style={Appstyles.container}>
+		<Box bg="#ecf0f1" safeArea p="5">
 			<TopBar />
 			<TabSwitcher tab={tab} setTab={setTab} />
 			<SearchBar />
@@ -64,21 +65,45 @@ export const TabView = ({ tab }) => {
 
 export const TabSwitcher = ({ tab, setTab }) => {
 	function tabSetter(props) {
-		setTab(props);
+		Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light), setTab(props);
 	}
 
 	return (
 		<HStack justifyContent="space-evenly" alignItems="center" mt="5">
-			<Pressable onPress={() => tabSetter("Instore")}>
-				<Text>Instore</Text>
+			<Pressable
+				style={tab === "Instore" ? styles.TabBody_Active : null}
+				onPress={() => tabSetter("Instore")}
+			>
+				<Text
+					fontFamily={"Manrope-Bold"}
+					style={tab === "Instore" ? styles.TabText_Active : null}
+				>
+					Instore
+				</Text>
 			</Pressable>
 
-			<Pressable onPress={() => tabSetter("To your door")}>
-				<Text>To your door</Text>
+			<Pressable
+				style={tab === "To your door" ? styles.TabBody_Active : null}
+				onPress={() => tabSetter("To your door")}
+			>
+				<Text
+					fontFamily={"Manrope-Bold"}
+					style={tab === "To your door" ? styles.TabText_Active : null}
+				>
+					To your door
+				</Text>
 			</Pressable>
 
-			<Pressable onPress={() => tabSetter("Rewards")}>
-				<Text>Rewards</Text>
+			<Pressable
+				style={tab === "Rewards" ? styles.TabBody_Active : null}
+				onPress={() => tabSetter("Rewards")}
+			>
+				<Text
+					fontFamily={"Manrope-Bold"}
+					style={tab === "Rewards" ? styles.TabText_Active : null}
+				>
+					Rewards
+				</Text>
 			</Pressable>
 		</HStack>
 	);
@@ -88,7 +113,7 @@ export const QuickLinks = () => {
 	const navigation = useNavigation();
 	return (
 		<Box>
-			<Heading color="white">For you</Heading>
+			<Heading fontFamily={"Manrope-Bold"}>For you</Heading>
 			<ScrollView
 				horizontal
 				showsHorizontalScrollIndicator={false}
@@ -108,33 +133,64 @@ export const QuickLinks = () => {
 
 export const GotoCameraButton = () => {
 	const navigation = useNavigation();
+	const [CameraButtonStyle, setCameraButtonStyle] = useState(
+		styles.CameraButtonBody_Default
+	);
 	return (
-		<HStack
-			style={styles.gotoButton}
-			mt="2"
-			borderRadius="10"
-			p="2"
-			alignItems="center"
-			justifyContent="space-between"
-			mb="5"
-			bg="white"
+		<Pressable
+			style={CameraButtonStyle}
+			onPressIn={() => {
+				setCameraButtonStyle(styles.CameraButtonBody_Pressed);
+			}}
+			onPressOut={() => {
+				setCameraButtonStyle(styles.CameraButtonBody_Default);
+			}}
+			onLongPress={() => {
+				Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium),
+					navigation.navigate("Camera");
+			}}
 		>
-			<VStack>
-				<Heading>Go to the Camera</Heading>
-				<Text>Take a pic of the item or scan the barcode</Text>
-				<Text>for more information !</Text>
-			</VStack>
+			{/* {({ pressed }) => <Text style={styles.text}>{pressed ? 'Pressed!' : 'Press Me'}</Text>} */}
+			{/* // _pressed={{ */}
+			{/* // 	bg: "primary.700",
+			// 	py: "2",
+			// 	px: "3",
+			// }} */}
 
-			<IconButton
-				ml="2"
-				icon={<Icon as={AntDesign} name="rightcircle" />}
-				borderRadius="full"
-				_icon={{
-					color: "black",
-					size: "md",
-				}}
-			/>
-		</HStack>
+			<HStack
+				shadow="1"
+				mt="2"
+				borderRadius="10"
+				pl="7"
+				pr="6"
+				py="5"
+				alignItems="center"
+				justifyContent="space-between"
+				mb="5"
+				bg="white"
+			>
+				<VStack>
+					<Text fontFamily={"Manrope-Bold"}>Go to the camera</Text>
+					<Text fontFamily={"Manrope-Regular"} mt="1">
+						Identify products using the camera.
+					</Text>
+				</VStack>
+
+				<IconButton
+					onPress={() => {
+						Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light),
+							navigation.navigate("Camera");
+					}}
+					ml="2"
+					icon={<Icon as={AntDesign} name="rightcircle" />}
+					borderRadius="full"
+					_icon={{
+						color: "black",
+						size: "md",
+					}}
+				/>
+			</HStack>
+		</Pressable>
 	);
 };
 
@@ -142,7 +198,7 @@ export const ForYouSection = () => {
 	const navigation = useNavigation();
 	return (
 		<Box>
-			<Heading color="white">For you</Heading>
+			<Heading fontFamily={"Manrope-Bold"}>For you</Heading>
 			<ScrollView
 				horizontal
 				showsHorizontalScrollIndicator={false}
@@ -165,6 +221,9 @@ export const SearchBar = () => {
 	return (
 		<HStack mt="5" mb="5" alignItems="center" justifyContent="space-between">
 			<Input
+				onPressIn={() => {
+					navigation.push("Search");
+				}}
 				width="80%"
 				placeholder="Search"
 				variant="filled"
@@ -182,10 +241,13 @@ export const SearchBar = () => {
 				}
 			/>
 			<IconButton
+				onPressIn={() => {
+					navigation.push("SearchFilters");
+				}}
 				icon={<Icon as={AntDesign} name="ellipsis1" />}
 				borderRadius="full"
 				_icon={{
-					color: "white",
+					color: "black",
 					size: "md",
 				}}
 			/>
@@ -200,11 +262,14 @@ export const TopBar = () => {
 		<HStack alignItems="center" justifyContent="space-between">
 			<Box>
 				<IconButton
-					onPress={() => navigation.push("Camera")}
+					onPress={() => {
+						Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium),
+							navigation.navigate("Camera");
+					}}
 					icon={<Icon as={AntDesign} name="camera" />}
 					borderRadius="full"
 					_icon={{
-						color: "white",
+						color: "black",
 						size: "md",
 					}}
 					// _hover={{
@@ -230,17 +295,19 @@ export const TopBar = () => {
 			</Box>
 
 			<Box>
-				<Text>NN1 4LA | 5KM</Text>
+				<Text fontFamily={"Manrope-ExtraBold"}>
+					NN1 4LA <Text fontFamily={"Manrope-Light"}> 5KM</Text>
+				</Text>
 			</Box>
 
 			<HStack>
 				<IconButton
-					onPress={() => navigation.navigate("MyFavorites")}
+					onPress={() => navigation.navigate("MyFavourites")}
 					mr="1"
 					icon={<Icon as={AntDesign} name="heart" />}
 					borderRadius="full"
 					_icon={{
-						color: "white",
+						color: "black",
 						size: "md",
 					}}
 				/>
@@ -249,7 +316,7 @@ export const TopBar = () => {
 					icon={<Icon as={AntDesign} name="smileo" />}
 					borderRadius="full"
 					_icon={{
-						color: "white",
+						color: "black",
 						size: "md",
 					}}
 				/>

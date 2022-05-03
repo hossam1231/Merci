@@ -1,11 +1,16 @@
-import {StyleSheet} from 'react-native'
+import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
-container: {
-    flex: 1,
-    marginTop: 20
-},
-welcome: {
-    textAlign: 'center'
-}
+	CameraButtonBody_Default: {},
+	CameraButtonBody_Pressed: {},
+	TabBody_Active: {
+		backgroundColor: "black",
+		borderRadius: 10,
+		padding: 5,
+	},
+	TabText_Active: {
+		color: "white",
+		marginLeft: 5,
+		marginRight: 5,
+	},
 });
