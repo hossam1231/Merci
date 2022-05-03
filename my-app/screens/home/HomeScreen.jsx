@@ -15,7 +15,7 @@ import React, { useState } from "react";
 import { Pressable } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { AntDesign, Ionicons } from "@expo/vector-icons";
-import Appstyles from "./App.scss";
+import styles from "./HomeScreen.StyleSheet.js";
 
 export default function HomeScreen() {
 	const navigation = useNavigation();
@@ -257,21 +257,3 @@ export const TopBar = () => {
 		</HStack>
 	);
 };
-
-const styles = StyleSheet.create({
-	GotoButton_Body: {
-		alignSelf: "center",
-
-		backgroundColor: "white",
-		borderRadius: 4,
-		height: 150,
-		shadowColor: "black",
-		width: 150,
-		shadowOffset: {
-			width: 400,
-			height: 900,
-		},
-		shadowRadius: 10,
-		shadowOpacity: 1,
-	},
-});
