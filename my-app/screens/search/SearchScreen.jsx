@@ -26,6 +26,7 @@ export const ToCamera = () => {
 					justifyContent={"space-evenly"}
 					borderRadius="5"
 					mt="2"
+					py="1"
 					mr="2"
 					bg="black"
 					w="100"
@@ -41,6 +42,7 @@ export const ToCamera = () => {
 					justifyContent={"space-evenly"}
 					borderRadius="5"
 					mt="2"
+					py="1"
 					mr="2"
 					bg="black"
 					w="100"

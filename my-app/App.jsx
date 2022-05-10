@@ -6,13 +6,18 @@ import useColorScheme from "./hooks/useColorScheme";
 import SearchScreen from "./screens/search/SearchScreen";
 import Test from "./test/src/test/Test";
 import Navigation from "./navigation/Navigation";
+import LoadingScreen from "./screens/loading/LoadingScreen";
 
 export default function App() {
 	const isLoadingComplete = useCachedResources();
 	const colorScheme = useColorScheme();
 
 	if (!isLoadingComplete) {
-		return null;
+		return (
+			<NativeBaseProvider>
+				<LoadingScreen />
+			</NativeBaseProvider>
+		);
 	} else {
 		return (
 			<NativeBaseProvider>
