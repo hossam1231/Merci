@@ -1,167 +1,114 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { StyleSheet } from "react-native";
 import Constants from "expo-constants";
 import {
 	NativeBaseProvider,
+	Box,
 	Text,
 	View,
 	HStack,
 	VStack,
+	Center,
+	Icon,
 	Spacer,
 	Badge,
 	SectionList,
+	ChevronRightIcon,
 } from "native-base";
+import { useNavigation } from "@react-navigation/native";
+import { Ionicons, FontAwesome, AntDesign } from "@expo/vector-icons";
 
 const initialData = [
 	{
-		title: "Sunday 1st May - 2022",
+		title: "",
 		data: [
 			{
 				event_id: "1",
-				name: "Womens Kickboxing",
-				club_name: "Devils Martial Arts",
-				duration: "60",
-				spaces_booked: 10,
-				event_limit: 20,
-				timeStamp: "10:00",
-				date: "2022-05-01 10:00:00.000000",
-				description: "Ladies Only Kickboxing",
+				icon: "shoppingcart",
+				name: "My orders",
 			},
 			{
 				event_id: "2",
-				name: "Senior Devils 13yrs +",
-				club_name: "Devils Martial Arts",
-				duration: "45",
-				spaces_booked: 5,
-				event_limit: 20,
-				timeStamp: "11:15",
-				date: "2022-05-01 11:15:00.000000",
-				description: "Padwork & Fitness",
-			},
-			{
-				event_id: "3",
-				name: "Senior Devils",
-				club_name: "Devils Martial Arts",
-				duration: "45",
-				spaces_booked: 5,
-				event_limit: 20,
-				timeStamp: "14:00",
-				date: "2022-05-01 11:15:00.000000",
-				description: "Padwork & Fitness",
+				icon: "hearto",
+				name: "Favourites",
 			},
 		],
 	},
 	{
-		title: "Monday 2nd May - 2022",
+		title: "",
 		data: [
 			{
 				id: "3",
-				name: "Open Gym",
-				club_name: "Devils Martial Arts",
-				duration: "60",
-				spaces_booked: 10,
-				event_limit: 20,
-				timeStamp: "13:00",
-				date: "2022-05-02 13:00:00.000000",
-				description: "Open Gym",
-			},
-			{
-				id: "4",
-				name: "Little Devils",
-				club_name: "Devils Martial Arts",
-				duration: "45",
-				spaces_booked: 5,
-				event_limit: 20,
-				timeStamp: "15:00",
-				date: "2022-05-02 15:00:00.000000",
-				description: "Padwork & Fitness",
+				icon: "meh",
+				name: "My details",
 			},
 		],
 	},
 	{
-		title: "Tuesday 3rd May - 2022",
+		title: "",
 		data: [
 			{
 				id: "3",
-				name: "Boxing",
-				club_name: "Devils Martial Arts",
-				duration: "60",
-				spaces_booked: 10,
-				event_limit: 20,
-				timeStamp: "13:00",
-				date: "2022-05-02 13:00:00.000000",
-				description: "Open Gym",
+				icon: "creditcard",
+				name: "Payment methods",
 			},
 			{
 				id: "4",
-				name: "Little Devils",
-				club_name: "Devils Martial Arts",
-				duration: "45",
-				spaces_booked: 5,
-				event_limit: 20,
-				timeStamp: "15:00",
-				date: "2022-05-02 15:00:00.000000",
-				description: "Padwork & Fitness",
+				icon: "pushpino",
+				name: "Saved adresses",
+			},
+			{
+				id: "5",
+				icon: "phone",
+				name: "Contact prefrences",
 			},
 		],
 	},
 	{
-		title: "Wednesday 4th May - 2022",
+		title: "",
 		data: [
 			{
-				id: "3",
-				name: "Boxing",
-				club_name: "Devils Martial Arts",
-				duration: "60",
-				spaces_booked: 10,
-				event_limit: 20,
-				timeStamp: "13:00",
-				date: "2022-05-02 13:00:00.000000",
-				description: "Open Gym",
-			},
-			{
-				id: "4",
-				name: "Little Devils",
-				club_name: "Devils Martial Arts",
-				duration: "45",
-				spaces_booked: 5,
-				event_limit: 20,
-				timeStamp: "15:00",
-				date: "2022-05-02 15:00:00.000000",
-				description: "Padwork & Fitness",
+				id: "6",
+				icon: "gift",
+				name: "Vouchers and credit",
 			},
 		],
 	},
 	{
-		title: "Thursday 5th May - 2022",
+		title: "",
 		data: [
 			{
-				id: "3",
-				name: "Sparring",
-				club_name: "Devils Martial Arts",
-				duration: "60",
-				spaces_booked: 10,
-				event_limit: 20,
-				timeStamp: "13:00",
-				date: "2022-05-02 13:00:00.000000",
-				description: "Sparring Session",
+				id: "7",
+				icon: "delete",
+				name: "Delete account",
+			},
+		],
+	},
+	{
+		title: "",
+		data: [
+			{
+				id: "8",
+				icon: "team",
+				name: "FAQs",
 			},
 			{
-				id: "4",
-				name: "Little Devils",
-				club_name: "Devils Martial Arts",
-				duration: "45",
-				spaces_booked: 5,
-				event_limit: 20,
-				timeStamp: "15:00",
-				date: "2022-05-02 15:00:00.000000",
-				description: "Padwork & Fitness",
+				id: "9",
+				icon: "bulb1",
+				name: "About",
+			},
+			{
+				id: "10",
+				icon: "logout",
+				name: "Log out",
 			},
 		],
 	},
 ];
 
 export default function AccountModal() {
+	const navigation = useNavigation();
+
 	const [data, setData] = useState(initialData);
 
 	return (
@@ -194,61 +141,29 @@ export default function AccountModal() {
 							borderColor="coolGray.200"
 							pl="4"
 							pr="5"
-							py="2"
+							py="5"
+							px="2"
 						>
 							<HStack space={3} justifyContent="space-between">
-								<View>
-									<Text
-										bold
-										fontSize="md"
-										color="coolGray.800"
-										textAlign={"center"}
-									>
-										{item.timeStamp}
-									</Text>
-									<Badge
-										colorScheme="coolGray"
-										_text={{
-											fontSize: 12,
-											color: "black",
-										}}
-									>
-										{item.spaces_booked + " / " + item.event_limit}
-									</Badge>
-								</View>
+								<Center>
+									<Icon as={AntDesign} name={item.icon} />
+								</Center>
+
 								<VStack>
 									<Text color="coolGray.800" bold>
 										{item.name}
 									</Text>
-									<Text fontSize={12} color="coolGray.800">
-										{item.duration} Mins
-									</Text>
-									<Text
-										color="coolGray.600"
-										_dark={{
-											color: "warmGray.200",
-										}}
-									>
-										{item.recentText}
-									</Text>
 								</VStack>
+
+								<Center right="0" position="absolute">
+									<Icon as={AntDesign} name="right" />
+								</Center>
+
 								<Spacer />
-								<Badge
-									colorScheme="success"
-									alignSelf="flex-start"
-									bg="cyan.500"
-									_text={{
-										fontSize: 12,
-										color: "white",
-									}}
-								>
-									Book Class
-								</Badge>
 							</HStack>
 						</View>
 					)}
 					keyExtractor={(item, index) => item + index}
-					stickySectionHeadersEnabled
 				/>
 			</View>
 		</NativeBaseProvider>

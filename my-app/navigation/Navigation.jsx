@@ -8,6 +8,7 @@ import AccountModal from "../screens/account/AccountModal";
 import FavouritesModal from "../screens/favourites/FavouritesModal";
 import SearchScreen from "../screens/search/SearchScreen";
 import SearchFiltersScreen from "../screens/search/SearchFiltersScreen";
+import AuthenticationModal from "../screens/authentication/AuthenticationModal";
 
 const Stack = createNativeStackNavigator();
 
@@ -45,6 +46,11 @@ export default function Navigation({ navigation }) {
 						name="MyAccount"
 						component={AccountModal}
 						options={{ title: "My account" }}
+					/>
+					<Stack.Screen
+						name="Authenticate"
+						component={AuthenticationModal}
+						options={{ headerShown: false }}
 					/>
 					<Stack.Screen
 						name="MyFavourites"

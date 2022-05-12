@@ -258,6 +258,8 @@ export const SearchBar = () => {
 export const TopBar = () => {
 	const navigation = useNavigation();
 
+	const [user, setUser] = useState();
+
 	return (
 		<HStack alignItems="center" justifyContent="space-between">
 			<Box>
@@ -302,7 +304,13 @@ export const TopBar = () => {
 
 			<HStack>
 				<IconButton
-					onPress={() => navigation.navigate("MyFavourites")}
+					onPressIn={() => {
+						if (!user) {
+							navigation.navigate("Authenticate");
+						} else {
+							navigation.navigate("MyFavourites");
+						}
+					}}
 					mr="1"
 					icon={<Icon as={AntDesign} name="heart" />}
 					borderRadius="full"
@@ -312,7 +320,13 @@ export const TopBar = () => {
 					}}
 				/>
 				<IconButton
-					onPress={() => navigation.navigate("MyAccount")}
+					onPressIn={() => {
+						if (!user) {
+							navigation.navigate("Authenticate");
+						} else {
+							navigation.navigate("MyAccount");
+						}
+					}}
 					icon={<Icon as={AntDesign} name="smileo" />}
 					borderRadius="full"
 					_icon={{
