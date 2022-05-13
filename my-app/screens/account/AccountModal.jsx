@@ -111,6 +111,8 @@ export default function AccountModal() {
 
 	const [data, setData] = useState(initialData);
 
+	
+
 	return (
 		<NativeBaseProvider>
 			<View style={styles.container}>

@@ -221,6 +221,7 @@ export const SearchBar = () => {
 	return (
 		<HStack mt="5" mb="5" alignItems="center" justifyContent="space-between">
 			<Input
+				showSoftInputOnFocus={false}
 				onPressIn={() => {
 					navigation.push("Search");
 				}}

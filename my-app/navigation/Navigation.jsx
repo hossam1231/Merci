@@ -47,11 +47,7 @@ export default function Navigation({ navigation }) {
 						component={AccountModal}
 						options={{ title: "My account" }}
 					/>
-					<Stack.Screen
-						name="Authenticate"
-						component={AuthenticationModal}
-						options={{ headerShown: false }}
-					/>
+
 					<Stack.Screen
 						name="MyFavourites"
 						component={FavouritesModal}
@@ -62,6 +58,33 @@ export default function Navigation({ navigation }) {
 						component={SearchFiltersScreen}
 						options={{ headerShown: false }}
 					/>
+				</Stack.Group>
+
+				<Stack.Group
+					screenOptions={{
+						presentation: "modal",
+					}}
+				>
+					<Stack.Screen
+						name="Authenticate"
+						component={AuthenticationModal}
+						options={{ headerShown: false }}
+					/>
+					{/* <Stack.Screen
+						name="Authenticate"
+						component={AuthenticationModal}
+						options={{ title: "" }}
+					/>
+					<Stack.Screen
+						name="Authenticate"
+						component={AuthenticationModal}
+						options={{ title: "My account" }}
+					/>
+					<Stack.Screen
+						name="Authenticate"
+						component={AuthenticationModal}
+						options={{ title: "My account" }}
+					/> */}
 				</Stack.Group>
 			</Stack.Navigator>
 		</NavigationContainer>
