@@ -13,6 +13,7 @@ import {
 import React, { useState } from "react";
 import { Ionicons, FontAwesome, AntDesign } from "@expo/vector-icons";
 import { emailProviders, federationProviders } from "./FederationProviders";
+// import { signIn, signUp } from "../../components/authentication/Cognito";
 
 const AuthenticationModal = () => {
 	const [page, setPage] = useState(0);
@@ -25,6 +26,24 @@ const AuthenticationModal = () => {
 };
 
 export const TabContent = ({ page, setPage }) => {
+	const [authType, setAuthType] = useState();
+	const [credentials, setCredentials] = useState({
+		email: "",
+		username: "",
+		password: "",
+		phoneNumber: "",
+	});
+
+	// const authenticate = () => {
+	// 	if (authType == "Sign In") {
+	// 		signIn(credentials);
+	// 	}
+
+	// 	if (authType == "Get Started") {
+	// 		signUp(credentials);
+	// 	}
+	// };
+
 	if (page === 0) {
 		return (
 			<>
@@ -45,18 +64,30 @@ export const TabContent = ({ page, setPage }) => {
 	} else if (page === 1) {
 		return (
 			<>
-				<EmailLogin />
+				<EmailLogin setAuthType={setAuthType} authType={authType} />
 			</>
 		);
 	} else if (page === 3) {
 		return (
-			// email
+			// phone number
 			<>
 				<Input />
 				<Button>Continue</Button>
 			</>
 		);
 	} else if (page === 4) {
+		// username
+		<>
+			<Input />
+			<Button>Continue</Button>
+		</>;
+	} else if (page === 5) {
+		// email
+		<>
+			<Input />
+			<Button>Continue</Button>
+		</>;
+	} else if (page === 6) {
 		// password
 		<>
 			<Input />
@@ -90,36 +121,49 @@ export const TermsConditions = () => {
 	);
 };
 
-export const EmailLogin = () => {
+export const EmailLogin = ({ authType, setAuthType }) => {
 	const [data, setData] = useState(emailProviders);
 	return (
 		<>
 			{data.map(function (item, i) {
-				return <EachEmailLogin item={item} key={i} />;
+				return (
+					<EachEmailLogin
+						authType={authType}
+						setAuthType={setAuthType}
+						item={item}
+						key={i}
+					/>
+				);
 			})}
 		</>
 	);
 };
 
-export const EachEmailLogin = (item) => {
-	const { name, icon } = item.item;
+export const EachEmailLogin = ({ item, authType, setAuthType }) => {
+	const { name, icon } = item;
 
 	return (
 		<>
-			<Box
-				justifyContent="center"
-				alignItems="center"
-				shadow="1"
-				bg="white"
-				m="2"
-				mt="2"
-				w="100%"
-				h="10"
+			<Pressable
+				onPress={() => {
+					setAuthType(name);
+				}}
 			>
-				<Text color="coolGray.800" bold>
-					{name}
-				</Text>
-			</Box>
+				<Box
+					justifyContent="center"
+					alignItems="center"
+					shadow="1"
+					bg="white"
+					m="2"
+					mt="2"
+					w="100%"
+					h="10"
+				>
+					<Text color="coolGray.800" bold>
+						{name}
+					</Text>
+				</Box>
+			</Pressable>
 		</>
 	);
 };

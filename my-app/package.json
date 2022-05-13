@@ -10,10 +10,12 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@react-native-async-storage/async-storage": "~1.17.3",
     "@react-navigation/native": "^6.0.10",
     "@react-navigation/native-stack": "^6.6.2",
     "amazon-cognito-identity-js": "^5.2.8",
     "aws": "^0.0.3-2",
+    "aws-sdk": "^2.1134.0",
     "expo": "~45.0.0",
     "expo-barcode-scanner": "^11.3.0",
     "expo-blur": "^11.1.0",

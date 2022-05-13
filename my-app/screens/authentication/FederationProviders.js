@@ -19,12 +19,10 @@ export const federationProviders = [
 export const emailProviders = [
 	{
 		federation_id: "1",
-		icon: "google",
 		name: "Sign In",
 	},
 	{
 		federation_id: "2",
-		icon: "apple1",
 		name: "Get Started",
 	},
 ];
