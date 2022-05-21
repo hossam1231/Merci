@@ -3,6 +3,7 @@ import {
 	VStack,
 	Text,
 	Button,
+	Input,
 	HStack,
 	SectionList,
 	Center,
@@ -64,30 +65,37 @@ export const TabContent = ({ page, setPage }) => {
 	} else if (page === 1) {
 		return (
 			<>
-				<EmailLogin setAuthType={setAuthType} authType={authType} />
+				<EmailLogin
+					setPage={setPage}
+					setAuthType={setAuthType}
+					authType={authType}
+				/>
 			</>
 		);
-	} else if (page === 3) {
+	} else if (page === 2) {
 		return (
 			// phone number
 			<>
+				<Text>Enter your phone number</Text>
 				<Input />
 				<Button>Continue</Button>
 			</>
 		);
-	} else if (page === 4) {
+	} else if (page === 3) {
 		// username
 		<>
+			<Text>Enter your username</Text>
+			<Input />
+			<Button>Continue</Button>
+		</>;
+	} else if (page === 4) {
+		// email
+		<>
+			<Text>Enter your email</Text>
 			<Input />
 			<Button>Continue</Button>
 		</>;
 	} else if (page === 5) {
-		// email
-		<>
-			<Input />
-			<Button>Continue</Button>
-		</>;
-	} else if (page === 6) {
 		// password
 		<>
 			<Input />
@@ -121,13 +129,14 @@ export const TermsConditions = () => {
 	);
 };
 
-export const EmailLogin = ({ authType, setAuthType }) => {
+export const EmailLogin = ({ authType, setAuthType, setPage }) => {
 	const [data, setData] = useState(emailProviders);
 	return (
 		<>
 			{data.map(function (item, i) {
 				return (
 					<EachEmailLogin
+						setPage={setPage}
 						authType={authType}
 						setAuthType={setAuthType}
 						item={item}
@@ -139,7 +148,7 @@ export const EmailLogin = ({ authType, setAuthType }) => {
 	);
 };
 
-export const EachEmailLogin = ({ item, authType, setAuthType }) => {
+export const EachEmailLogin = ({ item, authType, setAuthType, setPage }) => {
 	const { name, icon } = item;
 
 	return (
@@ -147,6 +156,7 @@ export const EachEmailLogin = ({ item, authType, setAuthType }) => {
 			<Pressable
 				onPress={() => {
 					setAuthType(name);
+					setPage(2);
 				}}
 			>
 				<Box
